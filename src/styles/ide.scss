@@ -23,7 +23,7 @@
     width: 100%;
     height: calc(12 * v.$base-unit);
     overflow: scroll;
-    background-color: v.$color-ide-dark-light;
+    background-color: v.$color-ide-dark;
     color: v.$color-ide-white;
 
     > .tab-bar {
@@ -35,11 +35,18 @@
       padding-right: calc(4 * v.$base-unit);
       border-right-width: 1px;
       border-color: v.$color-ide-dark;
-      background-color: v.$color-ide-dark;
       color: v.$color-ide-white;
+
+      &.active {
+        background-color: v.$color-ide-dark-light;
+        border-bottom: 0px;
+        border-top: 2px;
+        border-top-color: rgb(59 130 246);
+      }
 
       :active:hover {
         background-color: v.$color-ide-dark-light;
+        cursor: pointer;
       }
 
       > :not([hidden]) ~ :not([hidden]) {
@@ -57,7 +64,6 @@
     padding-top: calc(4 * v.$base-unit);
     color: v.$color-ide-white;
     overflow-y: scroll;
-    :hover{ cursor: pointer; }
     > .content-editor {
       display: flex;
       flex-direction: row;
