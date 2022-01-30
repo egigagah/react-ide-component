@@ -2466,11 +2466,11 @@ function IdeComponent() {
                 "asdasd",
                 React.createElement("p", null, "asdasdds")),
             ")"),
-        React.createElement("div", { id: "body-editor", className: "flex flex-col h-full w-full py-4 text-secondary hover:cursor-text overflow-scroll" },
-            React.createElement("div", { className: "flex flex-row space-x-2 relative w-full" },
-                React.createElement("div", { id: "number-body", className: "flex flex-row w-6 sticky left-0 bg-accentDarkLight px-6" },
-                    React.createElement("span", { className: "pr-4 flex flex-row justify-end" }, "1")),
-                React.createElement("div", { id: "text-body", className: "flex flex-row flex-1" },
+        React.createElement("div", { id: "body-editor", className: "body-editor" },
+            React.createElement("div", { className: "content-editor" },
+                React.createElement("div", { id: "number-body", className: "number-content-editor" },
+                    React.createElement("span", null, "1")),
+                React.createElement("div", { id: "text-body", className: "text-content-editor" },
                     React.createElement("pre", { style: { padding: '0px !important', background: 'transparent !important' } },
                         React.createElement("code", { style: { padding: '0px !important', background: 'transparent !important' } }, "skljdkljskld")))))));
 }

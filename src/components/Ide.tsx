@@ -15,12 +15,12 @@ export default function IdeComponent() {
           <p>asdasdds</p>
         </button>)
       </div>
-      <div id="body-editor" className="flex flex-col h-full w-full py-4 text-secondary hover:cursor-text overflow-scroll">
-        <div className="flex flex-row space-x-2 relative w-full">
-          <div id="number-body" className="flex flex-row w-6 sticky left-0 bg-accentDarkLight px-6">
-            <span className="pr-4 flex flex-row justify-end">1</span>
+      <div id="body-editor" className="body-editor">
+        <div className="content-editor">
+          <div id="number-body" className="number-content-editor">
+            <span>1</span>
           </div>
-          <div id="text-body" className="flex flex-row flex-1">
+          <div id="text-body" className="text-content-editor">
             <pre style={{padding: '0px !important', background: 'transparent !important'}}><code style={{padding: '0px !important', background: 'transparent !important'}}>skljdkljskld</code></pre>
           </div>
         </div>

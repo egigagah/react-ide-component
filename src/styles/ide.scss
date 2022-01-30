@@ -1,49 +1,98 @@
+@use './variables.scss' as v;
+
 .ide-component {
   height: 65vh;
   width: 90vw;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  background-color: #222A2E;
-  border-radius: 24px;
+  background-color: v.$color-ide-dark-light;
+  border-radius: calc(6 * v.$base-unit);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-width: 1px;
-  border-color: #222A2E;
-}
+  border-width: 1;
+  border-color: v.$color-ide-dark-light;
 
-.ide-component > .bar-ide-component {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 48px;
-  overflow: scroll;
-  background-color: #222A2E;
-  color: #F4F4F4;
-}
+  @media (min-width: v.$md-screen) {
+    width: calc(220 * v.$base-unit);
+    height: calc(120 * v.$base-unit);
+  }
+  
+  > .bar-ide-component {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(12 * v.$base-unit);
+    overflow: scroll;
+    background-color: v.$color-ide-dark-light;
+    color: v.$color-ide-white;
 
-.ide-component > .bar-ide-component > .tab-bar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  min-width: 160px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-right-width: 1px;
-  border-color: #1A2023;
-  background-color: #1A2023;
-}
-.ide-component > .bar-ide-component > .tab-bar:active:hover {
-  background-color: #222A2E;
-}
+    > .tab-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      min-width: calc(40 * v.$base-unit);
+      padding-left: calc(4 * v.$base-unit);
+      padding-right: calc(4 * v.$base-unit);
+      border-right-width: 1px;
+      border-color: v.$color-ide-dark;
+      background-color: v.$color-ide-dark;
+      color: v.$color-ide-white;
 
-.ide-component > .bar-ide-component > .tab-bar > :not([hidden]) ~ :not([hidden]) {
-  margin-right: 8px;
-  margin-left: 8px;
-}
+      :active:hover {
+        background-color: v.$color-ide-dark-light;
+      }
 
-@media (min-width: 1024px) {
-  .ide-component {
-    width: 880px;
-    width: 480px;
+      > :not([hidden]) ~ :not([hidden]) {
+        margin-right: calc(2 * v.$base-unit);
+        margin-left: calc(2 * v.$base-unit);
+      }
+    }
+  }
+
+  > .body-editor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding-top: calc(4 * v.$base-unit);
+    color: v.$color-ide-white;
+    overflow-y: scroll;
+    :hover{ cursor: pointer; }
+    > .content-editor {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      width: 100%;
+      > :not([hidden]) ~ :not([hidden]) {
+        margin-right: calc(2 * v.$base-unit);
+        margin-left: calc(2 * v.$base-unit);
+      }
+      > .number-content-editor {
+        display: flex;
+        flex-direction: row;
+        width: calc(6 * v.$base-unit);
+        padding-left: calc(3 * v.$base-unit);
+        padding-right: calc(3 * v.$base-unit);
+        span {
+          display: flex;
+          flex-direction: row;
+          justify-content: end;
+          padding-right: calc(3 * v.$base-unit);
+        }
+      }
+      > .text-content-editor {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        > pre {
+          padding: '0px !important';
+          background-color: 'transparent !important';
+          > code {
+            padding: '0px !important';
+            background-color: 'transparent !important';
+          }
+        }
+      }
+    }
   }
 }
