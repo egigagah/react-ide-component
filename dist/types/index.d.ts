@@ -1,2 +1,2 @@
 import IdeComponent from "./components/Ide";
-export { IdeComponent };
+export default IdeComponent;

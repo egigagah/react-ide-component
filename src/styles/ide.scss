@@ -11,6 +11,7 @@
   overflow: hidden;
   border-width: 1;
   border-color: v.$color-ide-dark-light;
+  line-height: 1.5;
 
   @media (min-width: v.$md-screen) {
     width: calc(220 * v.$base-unit);
@@ -64,6 +65,7 @@
     padding-top: calc(4 * v.$base-unit);
     color: v.$color-ide-white;
     overflow-y: scroll;
+    cursor: text;
     > .content-editor {
       display: flex;
       flex-direction: row;
@@ -91,11 +93,12 @@
         flex-direction: row;
         flex: 1;
         > pre {
-          padding: '0px !important';
-          background-color: 'transparent !important';
+          padding: 0px !important;
+          margin: 0px !important;
+          background-color: transparent !important;
           > code {
-            padding: '0px !important';
-            background-color: 'transparent !important';
+            padding: 0px !important;
+            background-color: transparent !important;
           }
         }
       }
