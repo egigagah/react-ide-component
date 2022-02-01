@@ -22,7 +22,7 @@ export default {
     typescript({ tsconfig: "./tsconfig.json" }),
     scss({ insert: true })
   ],
-  external: ['react', 'react-dom', 'html-react-parser', 'highlight.js', 'highlight.js/styles/tomorrow-night-blue.css']
+  external: ['react', 'react-dom', 'html-react-parser', 'highlight.js', 'highlight.js/styles/tomorrow-night-blue.css', 'react-icons/ai', 'react-icons/io']
 }
 
 // export default [

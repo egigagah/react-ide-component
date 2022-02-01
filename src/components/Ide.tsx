@@ -51,28 +51,35 @@ interface IdeComponentType {
 }
 
 const IdeComponent: FC<IdeComponentType> = ({datas}) => {
-  const [isMounted, setIsMounted] = useState(false);
   const [tabActive, setTabActive] = useState<tabDataType | null>(null)
   const [tabLoading, setTabLoading] = useState<boolean>(true)
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, [])
+  const convertContent = (dataParse:tabDataType) => {
+    return new Promise<tabDataType>((resolve, reject) => {
+      try {
+        dataParse.content = dataParse.content.map(x => hljs.highlight(x, {language: dataParse.lang}).value)
+        resolve(dataParse)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
 
   useEffect(() => {
     let ready = true
     if (ready) {
       setTabLoading(true)
-      datas.forEach((x) => {
-        x.content.forEach((c, i) => {
-          x.content[i] = hljs.highlight(c, {language: x.lang}).value;
-        })
+      convertContent({...datas[0]}).then((res) => {
+        setTabLoading(false)
+        setTabActive(res)
       })
-      setTabActive(datas[0])
-      setTabLoading(false)
     }
     return () => {ready = false}
-  })
+  }, [])
+
+  // useEffect(() => {
+  //   typewritingCode(document.querySelectorAll<HTMLElement>('.codeScript-writter'))
+  // }, [tabActive])
 
   return (
     <Fragment>
@@ -81,8 +88,14 @@ const IdeComponent: FC<IdeComponentType> = ({datas}) => {
           {datas.map((item, idx) => (
             <button
               key={idx}
-              // onClick={() => setTabActive(item)}
-              className={`tab-bar ${tabActive == item ? 'active' : ''}`}
+              onClick={() => {
+                setTabLoading(true)
+                convertContent({...datas[idx]}).then((res) => {
+                  setTabLoading(false)
+                  setTabActive(res);
+                })}
+              }
+              className={`tab-bar ${tabActive?.id == item?.id ? 'active' : ''}`}
             >
               {item.icon}
               <p>{item.filename}</p>
@@ -90,7 +103,7 @@ const IdeComponent: FC<IdeComponentType> = ({datas}) => {
           ))}
         </div>
         <div id="body-editor" className="body-editor">
-          { !tabLoading && datas[0]?.content?.map((item, idx) => (
+          { !tabLoading && tabActive?.content?.map((item, idx) => (
             <div key={idx} className="content-editor">
               <div id="number-body" className="number-content-editor">
                 <span>{idx+1}</span>

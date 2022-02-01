@@ -18,10 +18,6 @@
   },
   "author": "Egi Gagah",
   "license": "ISC",
-  "dependencies": {
-    "highlight.js": "^11.4.0",
-    "html-react-parser": "^1.4.6"
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
@@ -44,6 +40,9 @@
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "highlight.js": "^11.4.0",
+    "html-react-parser": "^1.4.6",
+    "react-icons": "^4.3.1"
   }
 }
