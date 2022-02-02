@@ -10,11 +10,8 @@
     "start": "rollup -c -w"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
@@ -24,18 +21,16 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "rimraf": "^3.0.2",
-    "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-scss": "^3.0.0",
     "sass": "^1.49.0",
     "typescript": "^4.5.5"
   },
   "peerDependencies": {
-    "gsap": "^3.9.1",
-    "highlight.js": "^11.4.0",
-    "html-react-parser": "^1.4.6",
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0",
-    "react-icons": "^4.3.1"
+    "gsap": "^2.0.0 || ^3.9.1",
+    "highlight.js": "^11.0.0 || ^11.4.0",
+    "html-react-parser": "^1.2.0 || ^1.4.6",
+    "react": "^16.8.0 || ^17.0.2",
+    "react-dom": "^16.8.0 || ^17.0.2"
   },
   "keywords": [
     "react",
@@ -55,7 +50,12 @@
   },
   "author": "Egi Gagah Brilliant",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egigagah/react-ide-component"
+  },
+  "homepage": "https://github.com/egigagah/react-ide-component",
   "bugs": {
-    "url": "https://github.com/justin-chu/react-fast-marquee/issues"
+    "url": "https://github.com/egigagah/react-ide-component/issues"
   }
 }

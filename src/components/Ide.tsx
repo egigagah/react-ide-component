@@ -99,7 +99,6 @@ const IdeComponent: FC<IdeComponentType> = ({datas}) => {
       setTabLoading(true)
       mappingDatas({...datas[0]})
       .then((res) => {
-        console.log(res, "---remap")
         setTabActive(res)
         setTabLoading(false)
         typewritingCode()

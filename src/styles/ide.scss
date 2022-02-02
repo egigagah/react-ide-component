@@ -13,11 +13,6 @@
   border-color: v.$color-ide-dark-light;
   line-height: 1.5;
 
-  // @media (min-width: v.$md-screen) {
-  //   width: calc(220 * v.$base-unit);
-  //   height: calc(120 * v.$base-unit);
-  // }
-
   p, span {
     font-family: v.$base-font;
   }
@@ -102,12 +97,6 @@
           left: 0;
 
         > .number-content-editor {
-          // display: flex;
-          // flex-direction: row;
-          // width: calc(6 * v.$base-unit);
-          // padding-left: calc(3 * v.$base-unit);
-          // padding-right: calc(3 * v.$base-unit);
-          // background-color: v.$color-ide-dark-light;
           > span {
             display: flex;
             flex: 1;
@@ -125,9 +114,6 @@
           min-width: 100%;
 
         > .text-content-editor {
-          // display: flex;
-          // flex-direction: row;
-          // flex: 1;
           > pre {
             padding: 0px !important;
             margin: 0px !important;
