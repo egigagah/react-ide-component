@@ -48,11 +48,11 @@ const ideData = [
 type for datas object
 | Property        | Type                        | Required           | Default           | Description                                              |
 | :-------------- | :-------------------------- | :---------------- | :---------------- | :------------------------------------------------------- |
-| `id`         | `string`                    | true              | `null`              | tab id                       |
+| `id`         | `string`                    | true              | `null`              | tab's ids that you can use for your own needs                       |
 | `icon`         | `JSX.Element`                    | true              | `null`              | you can use your own svg, png as icon logo that representation tile extention / code language                       |
 | `filename`         | `string`                    | true              | `null`              | filename and extention file that will shown as tab's label  `example: 'index.js'`                    |
 | `content`         | `string`                    | true              | `null`              | it will be use as code text, enter/break line inside string didnt not work here. if you want to break line code content use `<br>` instead.                       |
-| `lang`         | `string`                    | true              | `null`              | language name. example `javascript, php, java, py, etc`                       |
+| `lang`         | `string`                    | true              | `null`              | language name. example `javascript, php, java, python, etc` you can serach list language available from [highlight.js languages list](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md)                       |
 
 Then insert component and datas like this
 ```sh
