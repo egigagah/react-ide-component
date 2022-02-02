@@ -1,7 +1,7 @@
 import { FC } from "react";
 import 'highlight.js/styles/tomorrow-night-blue.css';
 import '../styles/ide.scss';
-interface TabDataType {
+interface tabDataType {
     /**
      * Id for data object
      * Type: string | name
@@ -28,7 +28,7 @@ interface TabDataType {
      * Default: ""
      * Description: pass your code in here
      */
-    content: string;
+    content: string[];
     /**
      * Language code
      * Type: string
@@ -40,10 +40,10 @@ interface TabDataType {
 interface IdeComponentType {
     /**
      * Array of object data to render in editor
-     * Type: TabDataType[]
+     * Type: tabDataType[]
      * Default: ""
      */
-    datas: TabDataType[];
+    datas: tabDataType[];
 }
-declare const IdeComponent: FC<IdeComponentType>;
-export default IdeComponent;
+declare const IdeBackup: FC<IdeComponentType>;
+export default IdeBackup;

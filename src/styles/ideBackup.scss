@@ -1,5 +1,9 @@
 @use './variables.scss' as v;
 
+.hidden-script {
+  display: none;
+}
+
 .ide-component {
   height: min(75vh, 480px);
   width: min(90vw, 880px);
@@ -79,65 +83,44 @@
     width: 100%;
     padding-top: calc(4 * v.$base-unit);
     color: v.$color-ide-white;
-    overflow-y: scroll;
+    overflow: hidden;
     cursor: text;
     > .content-editor {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       position: relative;
       width: max-content;
+      overflow: scroll;
+
       > :not([hidden]) ~ :not([hidden]) {
         margin-right: calc(2 * v.$base-unit);
         margin-left: calc(2 * v.$base-unit);
       }
-      > .body-number-wrapper {
+      > .number-content-editor {
+        display: flex;
+        flex-direction: row;
+        width: calc(6 * v.$base-unit);
+        padding-left: calc(3 * v.$base-unit);
+        padding-right: calc(3 * v.$base-unit);
+        background-color: v.$color-ide-dark-light;
+        > span {
           display: flex;
-          flex-direction: column;
-          width: calc(6 * v.$base-unit);
-          padding-left: calc(3 * v.$base-unit);
-          padding-right: calc(3 * v.$base-unit);
-          background-color: v.$color-ide-dark-light;
-          position: sticky;
-          top: 0;
-          left: 0;
-
-        > .number-content-editor {
-          // display: flex;
-          // flex-direction: row;
-          // width: calc(6 * v.$base-unit);
-          // padding-left: calc(3 * v.$base-unit);
-          // padding-right: calc(3 * v.$base-unit);
-          // background-color: v.$color-ide-dark-light;
-          > span {
-            display: flex;
-            flex: 1;
-            flex-direction: row;
-            justify-content: end;
-          }
+          flex: 1;
+          flex-direction: row;
+          justify-content: end;
         }
       }
-      > .body-text-wrapper {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          text-align: start;
-          width: max-content;
-          min-width: 100%;
-
-        > .text-content-editor {
-          // display: flex;
-          // flex-direction: row;
-          // flex: 1;
-          > pre {
+      > .text-content-editor {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        > pre {
+          padding: 0px !important;
+          margin: 0px !important;
+          background-color: transparent !important;
+          > code {
             padding: 0px !important;
-            margin: 0px !important;
             background-color: transparent !important;
-            width: max-content;
-            min-width: 100%;
-            > code {
-              padding: 0px !important;
-              background-color: transparent !important;
-            }
           }
         }
       }
