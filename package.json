@@ -43,7 +43,7 @@
     "react-dom": "^16.8.0 || ^17.0.2"
   },
   "lint-staged": {
-    "src/**/*.tsx": [
+    "*.{tsx,ts,js,jsx}": [
       "eslint . --ext ts --ext tsx --ext js --fix",
       "prettier --write .",
       "git add ."
