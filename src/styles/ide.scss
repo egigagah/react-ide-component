@@ -1,4 +1,4 @@
-@use './variables.scss' as v;
+@use "./variables.scss" as v;
 
 .ide-component {
   height: min(75vh, 480px);
@@ -13,10 +13,11 @@
   border-color: v.$color-ide-dark-light;
   line-height: 1.5;
 
-  p, span {
+  p,
+  span {
     font-family: v.$base-font;
   }
-  
+
   > .bar-ide-component {
     display: flex;
     flex-direction: row;
@@ -86,15 +87,15 @@
         margin-left: calc(2 * v.$base-unit);
       }
       > .body-number-wrapper {
-          display: flex;
-          flex-direction: column;
-          width: calc(6 * v.$base-unit);
-          padding-left: calc(3 * v.$base-unit);
-          padding-right: calc(3 * v.$base-unit);
-          background-color: v.$color-ide-dark-light;
-          position: sticky;
-          top: 0;
-          left: 0;
+        display: flex;
+        flex-direction: column;
+        width: calc(6 * v.$base-unit);
+        padding-left: calc(3 * v.$base-unit);
+        padding-right: calc(3 * v.$base-unit);
+        background-color: v.$color-ide-dark-light;
+        position: sticky;
+        top: 0;
+        left: 0;
 
         > .number-content-editor {
           > span {
@@ -106,12 +107,12 @@
         }
       }
       > .body-text-wrapper {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          text-align: start;
-          width: max-content;
-          min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        text-align: start;
+        width: max-content;
+        min-width: 100%;
 
         > .text-content-editor {
           > pre {

@@ -9,6 +9,7 @@ React IDE Component is lighweight IDE component for react that has been included
 # Dependecies
 
 This components use:
+
 - [GSAP](https://www.npmjs.com/package/gsap) for animation that have impressive performance
 - [highlight.js](https://www.npmjs.com/package/highlight.js) for rich syntax highlighter and detect the language
 - [html-react-parser](https://www.npmjs.com/package/html-react-parser) for parsing HTML into React elements
@@ -30,11 +31,13 @@ yarn add react-ide-component
 # Usage
 
 Import the module
+
 ```sh
 import IdeComponent from 'react-ide-component'
 ```
 
 Prepare datas to send it as props, this example use [React Icons](https://www.npmjs.com/package/react-icons) as icon. you can use your own svg / image icon here
+
 ```sh
 const ideData = [
   {
@@ -46,22 +49,26 @@ const ideData = [
   },
 ]
 ```
+
 ## Datas Type
+
 type for datas object
-| Property        | Type                        | Required           | Default           | Description                                              |
+| Property | Type | Required | Default | Description |
 | :-------------- | :-------------------------- | :---------------- | :---------------- | :------------------------------------------------------- |
-| `id`         | `string`                    | true              | `null`              | tab's ids that you can use for your own needs                       |
-| `icon`         | `JSX.Element`                    | true              | `null`              | you can use your own svg, png as icon logo that representation tile extention / code language                       |
-| `filename`         | `string`                    | true              | `null`              | filename and extention file that will shown as tab's label  `example: 'index.js'`                    |
-| `content`         | `string`                    | true              | `null`              | it will be use as code text, enter/break line inside string didnt not work here. if you want to break line code content use `<br>` instead.                       |
-| `lang`         | `string`                    | true              | `null`              | language name. example `javascript, php, java, python, etc` you can serach list language available from [highlight.js languages list](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md)                       |
+| `id` | `string` | true | `null` | tab's ids that you can use for your own needs |
+| `icon` | `JSX.Element` | true | `null` | you can use your own svg, png as icon logo that representation tile extention / code language |
+| `filename` | `string` | true | `null` | filename and extention file that will shown as tab's label `example: 'index.js'` |
+| `content` | `string` | true | `null` | it will be use as code text, enter/break line inside string didnt not work here. if you want to break line code content use `<br>` instead. |
+| `lang` | `string` | true | `null` | language name. example `javascript, php, java, python, etc` you can serach list language available from [highlight.js languages list](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md) |
 
 Then insert component and datas like this
+
 ```sh
 <IdeComponent datas={ideData} />
 ```
 
 Might be your full code look like this
+
 ```sh
 import React from "react";
 import IdeComponent from 'react-ide-component'
@@ -95,6 +102,7 @@ function App() {
 ```
 
 # Props
-| Property        | Type                        | Required           | Default           | Description                                              |
-| :-------------- | :-------------------------- | :---------------- | :---------------- | :------------------------------------------------------- |
-| `datas`         | `TabDataType[]`                    | true              | `null`              | Array of object that representating tab ide, icon, filename, code, and language                       |
+
+| Property | Type            | Required | Default | Description                                                                     |
+| :------- | :-------------- | :------- | :------ | :------------------------------------------------------------------------------ |
+| `datas`  | `TabDataType[]` | true     | `null`  | Array of object that representating tab ide, icon, filename, code, and language |
