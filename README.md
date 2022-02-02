@@ -4,7 +4,9 @@ React IDE Component is lighweight IDE component for react that has been included
 
 [![npm type definitions](https://camo.githubusercontent.com/a659694184d9b46a3b77a8eae552bfaecde74562a1d4eae97068abce2870996b/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f74797065732f72656163742d67736170)](https://www.npmjs.com/package/react-ide-component)
 
-## Dependecies
+![Alt demo](https://media.giphy.com/media/PY0ylGrpniqz7M0oxM/giphy.gif)
+
+# Dependecies
 
 This components use:
 - [GSAP](https://www.npmjs.com/package/gsap) for animation that have impressive performance
