@@ -1,10 +1,12 @@
-import React, { HTMLAttributes, useState, useEffect, FC, Fragment } from "react"
+import React, { useState, useEffect, FC, Fragment } from "react"
 import parse from 'html-react-parser';
 import hljs from "highlight.js";
 import 'highlight.js/styles/tomorrow-night-blue.css'
 import '../styles/ide.scss'
+import gsap from "gsap";
+import TextPlugin from "gsap/dist/TextPlugin";
 
-interface tabDataType {
+interface TabDataType {
   /**
    * Id for data object
    * Type: string | name
@@ -31,7 +33,7 @@ interface tabDataType {
    * Default: ""
    * Description: pass your code in here
    */
-  content: string[],
+  content: string,
   /**
    * Language code
    * Type: string
@@ -40,46 +42,70 @@ interface tabDataType {
    */
   lang: string
 }
+
+interface IdeTypeState extends TabDataType {
+  /**
+   * Id for data object
+   * Type: string | name
+   * Default: ""
+   */
+  contentData?: string[],
+}
 // interface IdeComponentType extends HTMLAttributes<HTMLDivElement> {
 interface IdeComponentType {
   /**
    * Array of object data to render in editor
-   * Type: tabDataType[]
+   * Type: TabDataType[]
    * Default: ""
    */
-  datas: tabDataType[]
+  datas: TabDataType[]
 }
 
 const IdeComponent: FC<IdeComponentType> = ({datas}) => {
-  const [tabActive, setTabActive] = useState<tabDataType | null>(null)
+  const [tabActive, setTabActive] = useState<IdeTypeState | null>(null)
   const [tabLoading, setTabLoading] = useState<boolean>(true)
 
-  const convertContent = (dataParse:tabDataType) => {
-    return new Promise<tabDataType>((resolve, reject) => {
+  const mappingDatas = (d:IdeTypeState):Promise<IdeTypeState> => {
+    return new Promise((resolve, reject) => {
       try {
-        dataParse.content = dataParse.content.map(x => hljs.highlight(x, {language: dataParse.lang}).value)
-        resolve(dataParse)
+        const arr = d.content.split('<br>')
+        arr.forEach((c, i) => {
+          arr[i] = hljs.highlight(c, {language: d.lang}).value;
+        })
+        d.contentData = arr
+        resolve(d)
       } catch (error) {
         reject(error)
       }
     })
   }
 
+  const typewritingCode = () => {
+    const codeTl = gsap.timeline()
+    gsap.utils.toArray<HTMLElement>('.codeScript-writter')
+    .forEach(el => {
+      codeTl.fromTo(el,
+        {text: "", display: 'block'},
+        { text: el.innerHTML, stagger: el.innerText.length * 0.3 }
+      )
+    })
+    codeTl.play()
+  }
+
   useEffect(() => {
     let ready = true
     if (ready) {
+      gsap.registerPlugin(TextPlugin)
       setTabLoading(true)
-      convertContent({...datas[0]}).then((res) => {
-        setTabLoading(false)
+      mappingDatas({...datas[0]})
+      .then((res) => {
         setTabActive(res)
+        setTabLoading(false)
+        typewritingCode()
       })
     }
     return () => {ready = false}
   }, [])
-
-  // useEffect(() => {
-  //   typewritingCode(document.querySelectorAll<HTMLElement>('.codeScript-writter'))
-  // }, [tabActive])
 
   return (
     <Fragment>
@@ -89,32 +115,41 @@ const IdeComponent: FC<IdeComponentType> = ({datas}) => {
             <button
               key={idx}
               onClick={() => {
-                setTabLoading(true)
-                convertContent({...datas[idx]}).then((res) => {
+                mappingDatas({...item})
+                .then((res) => {
+                  setTabActive(res)
                   setTabLoading(false)
-                  setTabActive(res);
-                })}
-              }
-              className={`tab-bar ${tabActive?.id == item?.id ? 'active' : ''}`}
+                  typewritingCode()
+                })
+              }}
+              className={`tab-bar ${tabActive?.id == item.id ? 'active' : ''}`}
             >
-              {item.icon}
+              <span className="icon-logo">{item.icon}</span>
               <p>{item.filename}</p>
             </button>
           ))}
         </div>
         <div id="body-editor" className="body-editor">
-          { !tabLoading && tabActive?.content?.map((item, idx) => (
-            <div key={idx} className="content-editor">
-              <div id="number-body" className="number-content-editor">
-                <span>{idx+1}</span>
-              </div>
-              <div id="text-body" className="text-content-editor">
-                <pre style={{padding: '0px !important', background: 'transparent !important'}}><code style={{padding: '0px !important', background: 'transparent !important'}}>
-                  {parse(item)}
-                </code></pre>
-              </div>
+          <div className="content-editor">
+            <div className="body-number-wrapper">
+              { !tabLoading && tabActive?.contentData?.map((item, idx) => (
+                <div key={`num-${tabActive.id}-${idx}`} id="number-body" className="number-content-editor">
+                  <span>{idx+1}</span>
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="body-text-wrapper">
+              { !tabLoading && tabActive?.contentData?.map((item, idx) => (
+                <div key={`text-${tabActive.id}-${idx}`} id="text-body" className="text-content-editor">
+                  <pre style={{padding: '0px !important', background: 'transparent !important'}}>
+                    <code style={{padding: '0px !important', background: 'transparent !important'}} className="codeScript-writter">
+                      {parse(item == '' ? ' ' : item)}
+                    </code>
+                  </pre>
+                </div>
+              ))}
+            </div>
+            </div>
         </div>
       </div>
     </Fragment>

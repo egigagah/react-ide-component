@@ -13,11 +13,6 @@
   border-color: v.$color-ide-dark-light;
   line-height: 1.5;
 
-  // @media (min-width: v.$md-screen) {
-  //   width: calc(220 * v.$base-unit);
-  //   height: calc(120 * v.$base-unit);
-  // }
-
   p, span {
     font-family: v.$base-font;
   }
@@ -45,6 +40,11 @@
         background-color: v.$color-ide-dark;
         border-color: v.$color-ide-dark;
         color: v.$color-ide-white;
+
+        > span.icon-logo {
+          width: 18px;
+          height: 18px;
+        }
 
         &.active {
           background-color: v.$color-ide-dark-light;
@@ -85,31 +85,45 @@
         margin-right: calc(2 * v.$base-unit);
         margin-left: calc(2 * v.$base-unit);
       }
-      > .number-content-editor {
-        display: flex;
-        flex-direction: row;
-        width: calc(6 * v.$base-unit);
-        padding-left: calc(3 * v.$base-unit);
-        padding-right: calc(3 * v.$base-unit);
-        background-color: v.$color-ide-dark-light;
-        > span {
+      > .body-number-wrapper {
           display: flex;
-          flex: 1;
-          flex-direction: row;
-          justify-content: end;
+          flex-direction: column;
+          width: calc(6 * v.$base-unit);
+          padding-left: calc(3 * v.$base-unit);
+          padding-right: calc(3 * v.$base-unit);
+          background-color: v.$color-ide-dark-light;
+          position: sticky;
+          top: 0;
+          left: 0;
+
+        > .number-content-editor {
+          > span {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            justify-content: end;
+          }
         }
       }
-      > .text-content-editor {
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        > pre {
-          padding: 0px !important;
-          margin: 0px !important;
-          background-color: transparent !important;
-          > code {
+      > .body-text-wrapper {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          text-align: start;
+          width: max-content;
+          min-width: 100%;
+
+        > .text-content-editor {
+          > pre {
             padding: 0px !important;
+            margin: 0px !important;
             background-color: transparent !important;
+            width: max-content;
+            min-width: 100%;
+            > code {
+              padding: 0px !important;
+              background-color: transparent !important;
+            }
           }
         }
       }
