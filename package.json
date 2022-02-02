@@ -1,23 +1,14 @@
 {
-  "name": "devices-medias-component",
+  "name": "react-ide-component",
   "version": "0.0.0",
-  "description": "",
+  "description": "IDE Component with animation for react js",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
-  "directories": {
-    "example": "examples"
-  },
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
     "start": "rollup -c -w"
   },
-  "author": "Egi Gagah",
-  "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
@@ -45,5 +36,26 @@
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0",
     "react-icons": "^4.3.1"
+  },
+  "keywords": [
+    "react",
+    "marquee",
+    "react-component",
+    "reactjs",
+    "carousel",
+    "slider",
+    "ticker",
+    "horizontal-scrolling-carousels"
+  ],
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "example": "examples"
+  },
+  "author": "Egi Gagah Brilliant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justin-chu/react-fast-marquee/issues"
   }
 }
