@@ -8,7 +8,10 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "start": "rollup -c -w"
+    "start": "rollup -c -w",
+    "prepare": "husky install",
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "type-check": "tsc --pretty --noEmit"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
@@ -16,9 +19,14 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "eslint": "^8.8.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
     "path": "^0.12.7",
+    "prettier": "^2.5.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "rimraf": "^3.0.2",
@@ -33,6 +41,11 @@
     "html-react-parser": "^1.2.0 || ^1.4.6",
     "react": "^16.8.0 || ^17.0.2",
     "react-dom": "^16.8.0 || ^17.0.2"
+  },
+  "lint-staged": {
+    "*.{tsx}": [
+      "eslint . --ext ts --ext tsx --ext js --fix"
+    ]
   },
   "keywords": [
     "react",
@@ -54,7 +67,7 @@
     "example": "examples"
   },
   "author": "Egi Gagah Brilliant",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/egigagah/react-ide-component"
