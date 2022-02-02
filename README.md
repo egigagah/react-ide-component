@@ -2,7 +2,7 @@
 
 React IDE Component is lighweight IDE component for react that has been included with typewritting effect for animation.
 
-[![npm type definitions](https://camo.githubusercontent.com/a659694184d9b46a3b77a8eae552bfaecde74562a1d4eae97068abce2870996b/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f74797065732f72656163742d67736170)](https://www.npmjs.com/package/devices-medias-component)
+[![npm type definitions](https://camo.githubusercontent.com/a659694184d9b46a3b77a8eae552bfaecde74562a1d4eae97068abce2870996b/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f74797065732f72656163742d67736170)](https://www.npmjs.com/package/react-ide-component)
 
 ## Dependecies
 
@@ -16,20 +16,20 @@ This components use:
 If you're using `npm`, in the command prompt run:
 
 ```sh
-npm install devices-medias-component --save
+npm install react-ide-component --save
 ```
 
 If you're using `yarn`, run:
 
 ```sh
-yarn add devices-medias-component
+yarn add react-ide-component
 ```
 
 # Usage
 
 Import the module
 ```sh
-import IdeComponent from 'devices-medias-component'
+import IdeComponent from 'react-ide-component'
 ```
 
 Prepare datas to send it as props, this example use [React Icons](https://www.npmjs.com/package/react-icons) as icon. you can use your own svg / image icon here
@@ -62,7 +62,7 @@ Then insert component and datas like this
 Might be your full code look like this
 ```sh
 import React from "react";
-import IdeComponent from 'devices-medias-component'
+import IdeComponent from 'react-ide-component'
 import { FaReact } from 'react-icons/fa';
 
 const ideData = [
