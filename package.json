@@ -34,13 +34,16 @@
   },
   "keywords": [
     "react",
-    "marquee",
     "react-component",
     "reactjs",
-    "carousel",
-    "slider",
-    "ticker",
-    "horizontal-scrolling-carousels"
+    "ide",
+    "vscode",
+    "editor",
+    "media",
+    "xcode",
+    "highlight.js",
+    "typewritter",
+    "gsap"
   ],
   "files": [
     "dist"
