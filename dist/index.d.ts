@@ -35,7 +35,7 @@ interface TabDataType {
      */
     lang: string;
 }
-declare type ModeType = 'dark' | 'light';
+declare type ModeType = "dark" | "light";
 interface IdeComponentType {
     /**
      * Array of object data to render in editor

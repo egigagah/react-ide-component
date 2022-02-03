@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import '../styles/index.scss';
+import "../styles/index.scss";
 interface TabDataType {
     /**
      * an id for element id that might be could be usefull for your needed or u can let me generating randomly for you
@@ -36,7 +36,7 @@ interface TabDataType {
      */
     lang: string;
 }
-declare type ModeType = 'dark' | 'light';
+declare type ModeType = "dark" | "light";
 interface IdeComponentType {
     /**
      * Array of object data to render in editor
