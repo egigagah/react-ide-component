@@ -106,4 +106,4 @@ function App() {
 | Property | Type            | Required | Default | Description                                                                     |
 | :------- | :-------------- | :------- | :------ | :------------------------------------------------------------------------------ |
 | `datas`  | `TabDataType[]` | true     | `null`  | Array of object that representating tab ide, icon, filename, code, and language |
-| `mode`  | `dark | light` | false     | `dark`  | Mode for IDE color between `dark` and `light`, default is `dark |
+| `mode`  | `dark` or `light` | false     | `dark`  | Mode for IDE color between `dark` and `light`, default is `dark |
