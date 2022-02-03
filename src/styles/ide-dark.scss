@@ -1,0 +1,34 @@
+@use "./variables.scss" as v;
+
+.ide-component[data-theme="dark"] {
+  background-color: v.$color-ide-darken;
+  border: solid 1px v.$color-ide-dark;
+
+  > .bar-ide-component {
+    background-color: v.$color-ide-dark;
+    color: v.$ide-base-font-dark;
+
+    > button.tab-bar {
+      background-color: v.$color-ide-dark;
+      border: solid 0.5px v.$color-ide-dark;
+      color: v.$ide-base-font-dark;
+
+      &.active {
+        background-color: v.$color-ide-darken;
+      }
+
+      &:hover {
+        background-color: v.$color-ide-darken;
+      }
+    }
+  }
+
+  > .body-editor {
+    color: v.$ide-base-font-dark;
+    > .content-editor {
+      > .body-number-wrapper {
+        background-color: v.$color-ide-darken;
+      }
+    }
+  }
+}

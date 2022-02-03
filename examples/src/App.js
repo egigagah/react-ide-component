@@ -35,7 +35,7 @@ function App() {
         }}
       >
         <h3>Ide Component</h3>
-        <IdeComponent datas={tabData} />
+        <IdeComponent datas={tabData} mode="dark" />
       </div>
     </div>
   );

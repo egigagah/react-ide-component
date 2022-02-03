@@ -4,13 +4,10 @@
   height: min(75vh, 480px);
   width: min(90vw, 880px);
   font-family: v.$base-font;
-  background-color: v.$color-ide-dark-light;
   border-radius: calc(6 * v.$base-unit);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-width: 1px;
-  border-color: v.$color-ide-dark-light;
   line-height: 1.5;
 
   p,
@@ -24,8 +21,6 @@
     width: 100%;
     height: calc(12 * v.$base-unit);
     overflow: scroll;
-    background-color: v.$color-ide-dark;
-    color: v.$color-ide-white;
 
     > button {
       border-width: 0px;
@@ -37,10 +32,6 @@
         min-width: calc(40 * v.$base-unit);
         padding-left: calc(4 * v.$base-unit);
         padding-right: calc(4 * v.$base-unit);
-        border-right-width: 0.5px;
-        background-color: v.$color-ide-dark;
-        border-color: v.$color-ide-dark;
-        color: v.$color-ide-white;
 
         > span.icon-logo {
           width: 18px;
@@ -48,14 +39,12 @@
         }
 
         &.active {
-          background-color: v.$color-ide-dark-light;
           border-bottom-width: 0px;
           border-top-width: 3px;
           border-top-color: rgb(59 130 246);
         }
 
         &:hover {
-          background-color: v.$color-ide-dark-light;
           border-bottom-width: 0px;
           cursor: pointer;
         }
@@ -74,7 +63,6 @@
     height: 100%;
     width: 100%;
     padding-top: calc(4 * v.$base-unit);
-    color: v.$color-ide-white;
     overflow-y: scroll;
     cursor: text;
     > .content-editor {
@@ -92,7 +80,6 @@
         width: calc(6 * v.$base-unit);
         padding-left: calc(3 * v.$base-unit);
         padding-right: calc(3 * v.$base-unit);
-        background-color: v.$color-ide-dark-light;
         position: sticky;
         top: 0;
         left: 0;

@@ -1,8 +1,7 @@
-import React, { useState, useEffect, FC } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import parse from "html-react-parser";
 import hljs from "highlight.js";
-import "highlight.js/styles/tomorrow-night-blue.css";
-import "../styles/ide.scss";
+import "../styles/index.scss";
 import gsap from "gsap";
 import TextPlugin from "gsap/dist/TextPlugin";
 
@@ -19,6 +18,7 @@ interface TabDataType {
    * Default: ""
    * Description: you can pass icon JSX in here
    */
+  // eslint-disable-next-line no-undef
   icon: JSX.Element;
   /**
    * Filename for tab bar editor
@@ -51,7 +51,8 @@ interface IdeTypeState extends TabDataType {
    */
   contentData?: string[];
 }
-// interface IdeComponentType extends HTMLAttributes<HTMLDivElement> {
+
+type ModeType = "dark" | "light";
 interface IdeComponentType {
   /**
    * Array of object data to render in editor
@@ -59,21 +60,26 @@ interface IdeComponentType {
    * Default: ""
    */
   datas: TabDataType[];
+  mode?: ModeType;
 }
 
-const IdeComponent: FC<IdeComponentType> = ({ datas }) => {
+function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
   const [tabActive, setTabActive] = useState<IdeTypeState | null>(null);
   const [tabLoading, setTabLoading] = useState<boolean>(true);
+  // const [readyLoaded, setreadyLoaded] = useState<boolean>(true);
+
+  const ideRef = useRef<HTMLDivElement | null>(null);
 
   const mappingDatas = (d: IdeTypeState): Promise<IdeTypeState> =>
     new Promise((resolve, reject) => {
       try {
-        const arr = d.content.split("<br>");
+        const x = { ...d };
+        const arr = x.content.split("<br>");
         arr.forEach((c, i) => {
-          arr[i] = hljs.highlight(c, { language: d.lang }).value;
+          arr[i] = hljs.highlight(c, { language: x.lang }).value;
         });
-        d.contentData = arr;
-        resolve(d);
+        x.contentData = arr;
+        resolve(x);
       } catch (error) {
         reject(error);
       }
@@ -81,13 +87,15 @@ const IdeComponent: FC<IdeComponentType> = ({ datas }) => {
 
   const typewritingCode = () => {
     const codeTl = gsap.timeline();
-    gsap.utils.toArray<HTMLElement>(".codeScript-writter").forEach((el) => {
-      codeTl.fromTo(
-        el,
-        { text: "", display: "block" },
-        { text: el.innerHTML, stagger: el.innerText.length * 0.3 }
-      );
-    });
+    gsap.utils
+      .toArray<HTMLElement>(".codeScript-writter")
+      .forEach((el: { innerHTML: any; innerText: string | any[] }) => {
+        codeTl.fromTo(
+          el,
+          { text: "", display: "block" },
+          { text: el.innerHTML, stagger: el.innerText.length * 0.3 }
+        );
+      });
     codeTl.play();
   };
 
@@ -96,7 +104,7 @@ const IdeComponent: FC<IdeComponentType> = ({ datas }) => {
     if (ready) {
       gsap.registerPlugin(TextPlugin);
       setTabLoading(true);
-      mappingDatas({ ...datas[0] }).then((res) => {
+      mappingDatas(datas[0]).then((res) => {
         setTabActive(res);
         setTabLoading(false);
         typewritingCode();
@@ -107,8 +115,14 @@ const IdeComponent: FC<IdeComponentType> = ({ datas }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (mode === "dark") import("highlight.js/styles/stackoverflow-dark.css");
+    else import("highlight.js/styles/stackoverflow-light.css");
+    ideRef.current?.setAttribute("data-theme", mode);
+  }, [mode]);
+
   return (
-    <div id="cstm-editor" className="ide-component">
+    <div ref={ideRef} id="cstm-editor" className="ide-component">
       <div id="bar-editor" className="bar-ide-component">
         {datas.map((item, idx) => (
           <button
@@ -118,7 +132,7 @@ const IdeComponent: FC<IdeComponentType> = ({ datas }) => {
             }
             key={`${item?.filename}-${item?.id}-${idx}`}
             onClick={() => {
-              mappingDatas({ ...item }).then((res) => {
+              mappingDatas(item).then((res) => {
                 setTabActive(res);
                 setTabLoading(false);
                 typewritingCode();
@@ -177,6 +191,6 @@ const IdeComponent: FC<IdeComponentType> = ({ datas }) => {
       </div>
     </div>
   );
-};
+}
 
 export default IdeComponent;

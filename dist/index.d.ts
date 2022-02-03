@@ -1,5 +1,4 @@
-import { FC } from 'react';
-
+/// <reference types="react" />
 interface TabDataType {
     /**
      * an id for element id that might be could be usefull for your needed or u can let me generating randomly for you
@@ -36,6 +35,7 @@ interface TabDataType {
      */
     lang: string;
 }
+declare type ModeType = 'dark' | 'light';
 interface IdeComponentType {
     /**
      * Array of object data to render in editor
@@ -43,7 +43,8 @@ interface IdeComponentType {
      * Default: ""
      */
     datas: TabDataType[];
+    mode?: ModeType;
 }
-declare const IdeComponent: FC<IdeComponentType>;
+declare function IdeComponent({ datas, mode }: IdeComponentType): JSX.Element;
 
 export { IdeComponent as default };

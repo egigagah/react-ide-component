@@ -41,8 +41,8 @@ Prepare datas to send it as props, this example use [React Icons](https://www.np
 ```sh
 const ideData = [
   {
-    id: 'ts',
-    icon: <FaReact size='100%' />
+    id: 'tab1',
+    icon: <ReactSvg size='100%' />
     filename: 'index.tsx',
     content: 'console.log("test")',
     lang: 'typescript'
@@ -72,19 +72,19 @@ Might be your full code look like this
 ```sh
 import React from "react";
 import IdeComponent from 'react-ide-component'
-import { FaReact } from 'react-icons/fa';
+import { ReactSvg, JsSvg } from '../svg/ReactSvg'
 
 const ideData = [
   {
-    id: 'ts',
-    icon: <FaReact size='100%' />
+    id: 'tab1',
+    icon: <ReactSvg size='100%' />
     filename: 'index.tsx',
     content: 'console.log("test")',
     lang: 'typescript'
   },
   {
-    id: 'js',
-    icon: <FaReact size='100%' />
+    id: 'tab2',
+    icon: <JsSvg size='100%' />
     filename: 'index.jsx',
     content: 'console.log("test")',
     lang: 'javascript'

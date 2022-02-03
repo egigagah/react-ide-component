@@ -1,0 +1,34 @@
+@use "./variables.scss" as v;
+
+.ide-component[data-theme="light"] {
+  background-color: v.$color-ide-lighten;
+  border: solid 1px v.$color-ide-light;
+
+  > .bar-ide-component {
+    background-color: v.$color-ide-light;
+    color: v.$ide-base-font-light;
+
+    > button.tab-bar {
+      background-color: v.$color-ide-light;
+      border: solid 0.5px v.$color-ide-light;
+      color: v.$ide-base-font-light;
+
+      &.active {
+        background-color: v.$color-ide-lighten;
+      }
+
+      &:hover {
+        background-color: v.$color-ide-lighten;
+      }
+    }
+  }
+
+  > .body-editor {
+    color: v.$ide-base-font-light;
+    > .content-editor {
+      > .body-number-wrapper {
+        background-color: v.$color-ide-lighten;
+      }
+    }
+  }
+}

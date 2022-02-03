@@ -1,6 +1,5 @@
-import { FC } from "react";
-import "highlight.js/styles/tomorrow-night-blue.css";
-import "../styles/ide.scss";
+/// <reference types="react" />
+import '../styles/index.scss';
 interface TabDataType {
     /**
      * an id for element id that might be could be usefull for your needed or u can let me generating randomly for you
@@ -37,6 +36,7 @@ interface TabDataType {
      */
     lang: string;
 }
+declare type ModeType = 'dark' | 'light';
 interface IdeComponentType {
     /**
      * Array of object data to render in editor
@@ -44,6 +44,7 @@ interface IdeComponentType {
      * Default: ""
      */
     datas: TabDataType[];
+    mode?: ModeType;
 }
-declare const IdeComponent: FC<IdeComponentType>;
+declare function IdeComponent({ datas, mode }: IdeComponentType): JSX.Element;
 export default IdeComponent;
