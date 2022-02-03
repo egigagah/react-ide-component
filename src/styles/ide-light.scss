@@ -1,6 +1,6 @@
-@use "./variables.scss" as v;
+@use './variables.scss' as v;
 
-.ide-component[data-theme="light"] {
+.ide-component[data-theme='light'] {
   background-color: v.$color-ide-lighten;
   border: solid 1px v.$color-ide-light;
 

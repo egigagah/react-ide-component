@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import parse from "html-react-parser";
-import hljs from "highlight.js";
-import "../styles/index.scss";
-import gsap from "gsap";
-import TextPlugin from "gsap/dist/TextPlugin";
+import React, { useState, useEffect, useRef } from 'react';
+import parse from 'html-react-parser';
+import hljs from 'highlight.js';
+import '../styles/index.scss';
+import gsap from 'gsap';
+import TextPlugin from 'gsap/dist/TextPlugin';
 
 interface TabDataType {
   /**
@@ -52,7 +52,7 @@ interface IdeTypeState extends TabDataType {
   contentData?: string[];
 }
 
-type ModeType = "dark" | "light";
+type ModeType = 'dark' | 'light';
 interface IdeComponentType {
   /**
    * Array of object data to render in editor
@@ -63,7 +63,7 @@ interface IdeComponentType {
   mode?: ModeType;
 }
 
-function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
+function IdeComponent({ datas, mode = 'dark' }: IdeComponentType) {
   const [tabActive, setTabActive] = useState<IdeTypeState | null>(null);
   const [tabLoading, setTabLoading] = useState<boolean>(true);
   // const [readyLoaded, setreadyLoaded] = useState<boolean>(true);
@@ -74,7 +74,7 @@ function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
     new Promise((resolve, reject) => {
       try {
         const x = { ...d };
-        const arr = x.content.split("<br>");
+        const arr = x.content.split('<br>');
         arr.forEach((c, i) => {
           arr[i] = hljs.highlight(c, { language: x.lang }).value;
         });
@@ -88,11 +88,11 @@ function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
   const typewritingCode = () => {
     const codeTl = gsap.timeline();
     gsap.utils
-      .toArray<HTMLElement>(".codeScript-writter")
+      .toArray<HTMLElement>('.codeScript-writter')
       .forEach((el: { innerHTML: any; innerText: string | any[] }) => {
         codeTl.fromTo(
           el,
-          { text: "", display: "block" },
+          { text: '', display: 'block' },
           { text: el.innerHTML, stagger: el.innerText.length * 0.3 }
         );
       });
@@ -116,9 +116,9 @@ function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
   }, []);
 
   useEffect(() => {
-    if (mode === "dark") import("highlight.js/styles/stackoverflow-dark.css");
-    else import("highlight.js/styles/stackoverflow-light.css");
-    ideRef.current?.setAttribute("data-theme", mode);
+    if (mode === 'dark') import('highlight.js/styles/stackoverflow-dark.css');
+    else import('highlight.js/styles/stackoverflow-light.css');
+    ideRef.current?.setAttribute('data-theme', mode);
   }, [mode]);
 
   return (
@@ -126,10 +126,7 @@ function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
       <div id="bar-editor" className="bar-ide-component">
         {datas.map((item, idx) => (
           <button
-            id={
-              item?.id ??
-              `${item?.filename}-${idx + Math.floor(Math.random() * (100 - 1))}`
-            }
+            id={item?.id ?? `${item?.filename}-${idx + Math.floor(Math.random() * (100 - 1))}`}
             key={`${item?.filename}-${item?.id}-${idx}`}
             onClick={() => {
               mappingDatas(item).then((res) => {
@@ -138,7 +135,7 @@ function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
                 typewritingCode();
               });
             }}
-            className={`tab-bar ${tabActive?.id === item.id ? "active" : ""}`}
+            className={`tab-bar ${tabActive?.id === item.id ? 'active' : ''}`}
             type="button"
           >
             <span className="icon-logo">{item.icon}</span>
@@ -170,18 +167,18 @@ function IdeComponent({ datas, mode = "dark" }: IdeComponentType) {
                 >
                   <pre
                     style={{
-                      padding: "0px !important",
-                      background: "transparent !important",
+                      padding: '0px !important',
+                      background: 'transparent !important',
                     }}
                   >
                     <code
                       style={{
-                        padding: "0px !important",
-                        background: "transparent !important",
+                        padding: '0px !important',
+                        background: 'transparent !important',
                       }}
                       className="codeScript-writter"
                     >
-                      {parse(item === "" ? " " : item)}
+                      {parse(item === '' ? ' ' : item)}
                     </code>
                   </pre>
                 </div>
